@@ -1,13 +1,16 @@
-// src/index.tsx
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App";  // Ensure App.tsx exists in the src folder
-import "./index.css";
+import App from "./pages/App";
+import "./index.css"; 
 
-const rootElement = document.getElementById("root") as HTMLElement;
 
-ReactDOM.createRoot(rootElement).render(
+
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
+root.render(
   <React.StrictMode>
     <App />
+    <div>
+  
+    </div>
   </React.StrictMode>
 );

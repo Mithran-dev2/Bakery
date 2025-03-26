@@ -1,31 +1,38 @@
 import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import footer from "../components/footer"; 
+import Footer from "../components/footer";
 import Home from "./Home";
 import SweetsAndTreats from "../components/SweetsAndTreats";
+
 import CashewSweetSection from "../components/CashewSweetsSection";
 
 const App: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navbar */}
-      <Navbar />
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        {/* Navbar */}
+        <Navbar />
 
-      {/* Main Content */}
-      <main className="flex-grow">
-        {/* Render the Home component */}
-        <Home />
+        {/* Main Content */}
+        <main className="flex-grow">
+          <Routes>
+            {/* Home Page */}
+            <Route path="/" element={<Home />} />
 
-        {/* Render the SweetsAndTreats component */}
-        <SweetsAndTreats />
+            Sweets & Treats Section
+            <Route path="/home" element={<SweetsAndTreats />} />
 
-        {/* Render the CashewSweetSection component */}
-        <CashewSweetSection />
-      </main>
+            {/* Cashew Sweet Section */}
+            <Route path="/sweet-section" element={<CashewSweetSection />} />
+          </Routes>
+          
+        </main>
 
-      {/* Footer */}
-      <footer/>
-    </div>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

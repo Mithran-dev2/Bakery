@@ -1,28 +1,33 @@
 {
   "compilerOptions": {
+    // Target & Module Configuration
     "target": "ESNext",
     "module": "ESNext",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "jsx": "react-jsx",
+
+    // Module Resolution
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "noEmit": true,
+
+    // Type Safety & Code Consistency
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+
+    // JavaScript & Interoperability
+    "allowJs": true,
+    "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "paths": {
-      "@/*": ["src/*"]
-    },
-    "types": ["vite/client", "node"],
-    "allowUnreachableCode": false,
-    "allowUnusedLabels": false
+
+    // Type Definitions
+    "types": ["vite/client", "node"]
   },
-  "include": ["src", "src/App.tsx"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist", "vite.config.ts"],
   "references": []
 }

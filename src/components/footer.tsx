@@ -1,31 +1,18 @@
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
-import { motion } from "framer-motion";
 
 const Footer: React.FC = () => {
   return (
-    <motion.footer
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      className="bg-gradient-to-b from-red-900 to-black text-white py-10"
-    >
+    <footer className="bg-black text-white py-10">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           
           {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="flex justify-center md:justify-start"
-          >
+          <div>
             <img src="/assets/bakery logo.jpg" alt="Shree Mithai" className="h-16" />
-          </motion.div>
+          </div>
 
           {/* About Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
+          <div>
             <h3 className="font-bold mb-3 uppercase">About</h3>
             <ul className="space-y-2">
               {[
@@ -37,23 +24,15 @@ const Footer: React.FC = () => {
                 "Leave Us Your Feedback",
                 "Contact Us",
               ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  className="hover:text-red-500 cursor-pointer transition"
-                >
+                <li key={index} className="hover:text-red-500 cursor-pointer transition">
                   {item}
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Policies Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
+          <div>
             <h3 className="font-bold mb-3 uppercase">Policies</h3>
             <ul className="space-y-2">
               {[
@@ -62,76 +41,48 @@ const Footer: React.FC = () => {
                 "Refund Policy",
                 "Shipping Policy",
               ].map((item, index) => (
-                <motion.li
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  className="hover:text-red-500 cursor-pointer transition"
-                >
+                <li key={index} className="hover:text-red-500 cursor-pointer transition">
                   {item}
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Explore Section */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
+          <div>
             <h3 className="font-bold mb-3 uppercase">Explore</h3>
             <ul className="space-y-2">
               {["Sweets", "Savouries", "Bakery", "Hampers", "Bulk Orders"].map((item, index) => (
-                <motion.li
-                  key={index}
-                  whileHover={{ scale: 1.05 }}
-                  className="hover:text-red-500 cursor-pointer transition"
-                >
+                <li key={index} className="hover:text-red-500 cursor-pointer transition">
                   {item}
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         </div>
 
         {/* Social Icons */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="flex justify-center space-x-6 mt-8"
-        >
+        <div className="flex justify-center space-x-6 mt-8">
           {[
             { icon: <FaFacebook />, link: "#" },
             { icon: <FaInstagram />, link: "#" },
             { icon: <FaTwitter />, link: "#" },
             { icon: <FaYoutube />, link: "#" },
           ].map((social, index) => (
-            <motion.a
-              key={index}
-              href={social.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.2 }}
-            >
+            <a key={index} href={social.link} target="_blank" rel="noopener noreferrer">
               <span className="text-2xl cursor-pointer hover:text-red-500 transition">
                 {social.icon}
               </span>
-            </motion.a>
+            </a>
           ))}
-        </motion.div>
+        </div>
 
         {/* Copyright */}
-        <motion.p
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="text-center text-sm mt-6"
-        >
-          © {new Date().getFullYear()} ThenMozhi Sweets • Powered by Shopify
-        </motion.p>
+        <p className="text-center text-sm mt-6">
+          © {new Date().getFullYear()} Shree Mithai • Powered by Shopify
+        </p>
       </div>
-    </motion.footer>
+    </footer>
   );
 };
 
