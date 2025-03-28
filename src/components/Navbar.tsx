@@ -53,19 +53,18 @@
 import { useState } from "react";
 import { FaSearch, FaUser, FaShoppingCart } from "react-icons/fa";
 import SweetsDropdown from "./SweetsDropDown";
-
+import SavouriesDropdown from "./SavouriesDropDown";
 
 const Navbar: React.FC = () => {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const navItems = ["Sweets", "Savouries", "Bakery", "Hampers", "Bulk Orders"];
 
   const toggleDropdown = (item: string) => {
-    // Toggle the dropdown: close it if it’s already open, or open the one for this item.
     setOpenDropdown(openDropdown === item ? null : item);
   };
 
   return (
-    <nav className="bg-white border-b-2 border-red-600">
+    <nav className="bg-white border-b-2 border-red-600 relative">
       <div className="container mx-auto flex justify-between items-center py-4 px-6">
         {/* Logo */}
         <div>
@@ -80,16 +79,14 @@ const Navbar: React.FC = () => {
                 className="focus:outline-none flex items-center"
                 onClick={() => toggleDropdown(item)}
               >
-                {item}
-                <span className="ml-1">▼</span>
+                {item} <span className="ml-1">▼</span>
               </button>
-              {/* Conditionally render the dropdown.
-                  Here, only "Sweets" renders a dropdown.
-                  You can add similar dropdown components for other items later. */}
+
+              {/* Render correct dropdown based on the selected menu item */}
               {openDropdown === item && (
-                <div className="absolute left-0 mt-2">
-                  {item === "Sweets" && <SweetsDropdown/>}
-                  {/* For other items, insert their dropdown components if available */}
+                <div className="absolute left-0 mt-2 z-50 bg-white shadow-lg rounded-md">
+                  {item === "Sweets" && <SweetsDropdown />}
+                  {item === "Savouries" && <SavouriesDropdown />}
                 </div>
               )}
             </li>

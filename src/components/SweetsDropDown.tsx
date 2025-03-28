@@ -47,7 +47,39 @@
 
 
 
-import { useState } from "react";
+// import { useState } from "react";
+
+// const SweetsDropdown: React.FC = () => {
+//   const sweetsCategories = [
+//     "Cashew Sweets",
+//     "Almond Sweets",
+//     "Ghee Sweets",
+//     "Milk Sweets",
+//     "Assorted Sweets",
+//     "Mixed Dry Fruit Sweets",
+//   ];
+
+//   return (
+//     <div className="w-56 bg-white shadow-md rounded-md">
+//       <ul>
+//         {sweetsCategories.map((category, index) => (
+//           <li key={index} className="border-b last:border-none">
+//             <a
+//               href={`/sweets/${category.toLowerCase().replace(/ /g, "-")}`}
+//               className="block px-4 py-2 hover:bg-gray-100"
+//             >
+//               {category}
+//             </a>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// };
+
+// export default SweetsDropdown;
+
+import { Link } from "react-router-dom";
 
 const SweetsDropdown: React.FC = () => {
   const sweetsCategories = [
@@ -55,23 +87,26 @@ const SweetsDropdown: React.FC = () => {
     "Almond Sweets",
     "Ghee Sweets",
     "Milk Sweets",
-    "Assorted Sweets",
     "Mixed Dry Fruit Sweets",
   ];
 
   return (
     <div className="w-56 bg-white shadow-md rounded-md">
       <ul>
-        {sweetsCategories.map((category, index) => (
-          <li key={index} className="border-b last:border-none">
-            <a
-              href={`/sweets/${category.toLowerCase().replace(/ /g, "-")}`}
-              className="block px-4 py-2 hover:bg-gray-100"
-            >
-              {category}
-            </a>
-          </li>
-        ))}
+        {sweetsCategories.map((category, index) => {
+          // Create a URL-friendly string
+          const path = category.toLowerCase().replace(/ /g, "-");
+          return (
+            <li key={index} className="border-b last:border-none">
+              <Link
+                to={`/sweets/${path}`}
+                className="block px-4 py-2 hover:bg-gray-100"
+              >
+                {category}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

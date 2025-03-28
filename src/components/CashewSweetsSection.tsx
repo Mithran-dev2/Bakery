@@ -65,7 +65,7 @@ const CashewSweetsSection: React.FC = () => {
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredSweets.map((sweet) => (
-          <div key={sweet.id} className="border p-4 rounded-lg shadow">
+          <div key={sweet.id} className="p-4 rounded-lg shadow-sm">
             <img src={sweet.image} alt={sweet.name} className="w-full h-40 object-cover mb-2" />
             <h3 className="text-lg font-semibold">{sweet.name}</h3>
             <p className="text-gray-700">₹ {sweet.price}</p>

@@ -8,18 +8,17 @@ interface Sweet {
   inStock: boolean;
 }
 
-const milkSweets: Sweet[] = [
-  { id: 1, name: "Rasmalai", price: 280.0, image: "/assets dropdown Items/rasmalai-MS2.jpg", inStock: true },
-  { id: 2, name: "Special Milk Peda", price: 260.0, image: "/assets dropdown Items/spl-cow-milk-peda-MS2.jpg", inStock: true },
-  { id: 3, name: "ButterScotch Burfi", price: 320.0, image: "/assets dropdown Items/butterscotch-burfi-MS2.jpg", inStock: false },
+const mixedDryFruitSweets: Sweet[] = [
+  { id: 1, name: "Almond Khaleeji", price: 350.0, image: "/assets dropdown Items/almond-khaleeji-DS2.JPG", inStock: true },
+  { id: 2, name: "Khajur Pak", price: 400.0, image: "/assets dropdown Items/khajur-pak-DS2.jpg", inStock: true },
   
 ];
 
-const MilkSweetsSection: React.FC = () => {
+const MixedDryFruitSweetsSection: React.FC = () => {
   const [inStockOnly, setInStockOnly] = useState(false);
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
 
-  const filteredSweets = milkSweets.filter((sweet) =>
+  const filteredSweets = mixedDryFruitSweets.filter((sweet) =>
     (!inStockOnly || sweet.inStock) &&
     sweet.price >= priceRange[0] &&
     sweet.price <= priceRange[1]
@@ -27,7 +26,7 @@ const MilkSweetsSection: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-4">Milk Sweets</h2>
+      <h2 className="text-2xl font-bold mb-4">Mixed Dry Fruit Sweets</h2>
 
       {/* Filters */}
       <div className="flex gap-4 mb-6">
@@ -79,4 +78,4 @@ const MilkSweetsSection: React.FC = () => {
   );
 };
 
-export default MilkSweetsSection;
+export default MixedDryFruitSweetsSection;
