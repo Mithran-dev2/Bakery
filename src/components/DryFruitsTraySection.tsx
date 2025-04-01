@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface Savoury {
   id: number;
@@ -9,9 +10,8 @@ interface Savoury {
 }
 
 const dryFruitTrays: Savoury[] = [
-  { id: 1, name: "Dry Fruit Box (250gm)", price: 800.0, image: "/assets/savouries-dropdown-items/dry-fruit-box-4.jpg", inStock: true },
-  { id: 2, name: "Royal Dry Fruit Tin (250gm)", price: 600.0, image: "/assets/savouries-dropdown-items/royal-dry-fruit-tin-250g-4.jpg", inStock: true },
-  
+  { id: 32, name: "Dry Fruit Box (250gm)", price: 800.0, image: "/assets/savouries-dropdown-items/dry-fruit-box-4.jpg", inStock: true },
+  { id: 33, name: "Royal Dry Fruit Tin (250gm)", price: 600.0, image: "/assets/savouries-dropdown-items/royal-dry-fruit-tin-250g-4.jpg", inStock: true },
 ];
 
 const DryFruitTraySection: React.FC = () => {
@@ -28,9 +28,7 @@ const DryFruitTraySection: React.FC = () => {
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Dry Fruit Trays</h2>
 
-      {/* Filters */}
       <div className="flex gap-4 mb-6">
-        {/* In-stock filter */}
         <label className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -39,8 +37,6 @@ const DryFruitTraySection: React.FC = () => {
           />
           In Stock Only
         </label>
-
-        {/* Price Filter */}
         <div className="flex items-center gap-2">
           <span>Price:</span>
           <input
@@ -61,19 +57,30 @@ const DryFruitTraySection: React.FC = () => {
         </div>
       </div>
 
-      {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredSavouries.map((savoury) => (
-          <div key={savoury.id} className="p-4 rounded-lg shadow-sm">
-            <img src={savoury.image} alt={savoury.name} className="w-full h-40 object-cover mb-2" />
+          <Link
+            key={savoury.id}
+            to={`/product-details/${savoury.id}`}
+            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+          >
+            <img
+              src={savoury.image}
+              alt={savoury.name}
+              className="w-full h-40 object-cover mb-2"
+            />
             <h3 className="text-lg font-semibold">{savoury.name}</h3>
             <p className="text-gray-700">₹ {savoury.price}</p>
-            {!savoury.inStock && <span className="text-red-500">Out of stock</span>}
-          </div>
+            {!savoury.inStock && (
+              <span className="text-red-500">Out of stock</span>
+            )}
+          </Link>
         ))}
       </div>
 
-      {filteredSavouries.length === 0 && <p className="text-gray-500 mt-4">No items found in this range.</p>}
+      {filteredSavouries.length === 0 && (
+        <p className="text-gray-500 mt-4">No items found in this range.</p>
+      )}
     </div>
   );
 };

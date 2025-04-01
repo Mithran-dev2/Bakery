@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface Savoury {
   id: number;
@@ -9,11 +10,10 @@ interface Savoury {
 }
 
 const roastedBakedSavouries: Savoury[] = [
-  { id: 1, name: "Dry Roasted Pepper Cashew", price: 250.0, image: "/assets/savouries-dropdown-items/dry-roasted-pepper-cashew-3.jpg", inStock: true },
-  { id: 2, name: "Dry Roasted Sriracha Cashew", price: 120.0, image: "/assets/savouries-dropdown-items/dry-roasted-sriracha-cashew-3.jpg", inStock: true },
-  { id: 3, name: "Bajra mix Salted", price: 300.0, image: "/assets/savouries-dropdown-items/bajra-mix-salted-3.jpg", inStock: false },
-  { id: 3, name: "9 in 1 Mixture Pudina", price: 300.0, image: "/assets/savouries-dropdown-items/9-in-1-mixture-pudina-4.jpg", inStock: false },
-  
+  { id: 28, name: "Dry Roasted Pepper Cashew", price: 250.0, image: "/assets/savouries-dropdown-items/dry-roasted-pepper-cashew-3.jpg", inStock: true },
+  { id: 29, name: "Dry Roasted Sriracha Cashew", price: 120.0, image: "/assets/savouries-dropdown-items/dry-roasted-sriracha-cashew-3.jpg", inStock: true },
+  { id: 30, name: "Bajra mix Salted", price: 300.0, image: "/assets/savouries-dropdown-items/bajra-mix-salted-3.jpg", inStock: false },
+  { id: 31, name: "9 in 1 Mixture Pudina", price: 300.0, image: "/assets/savouries-dropdown-items/9-in-1-mixture-pudina-4.jpg", inStock: false },
 ];
 
 const RoastedBakedSavouries: React.FC = () => {
@@ -30,9 +30,7 @@ const RoastedBakedSavouries: React.FC = () => {
     <div className="container mx-auto p-4">
       <h2 className="text-2xl font-bold mb-4">Roasted & Baked Savouries</h2>
 
-      {/* Filters */}
       <div className="flex gap-4 mb-6">
-        {/* In-stock filter */}
         <label className="flex items-center gap-2">
           <input
             type="checkbox"
@@ -41,8 +39,6 @@ const RoastedBakedSavouries: React.FC = () => {
           />
           In Stock Only
         </label>
-
-        {/* Price Filter */}
         <div className="flex items-center gap-2">
           <span>Price:</span>
           <input
@@ -63,19 +59,30 @@ const RoastedBakedSavouries: React.FC = () => {
         </div>
       </div>
 
-      {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredSavouries.map((savoury) => (
-          <div key={savoury.id} className="p-4 rounded-lg shadow-sm">
-            <img src={savoury.image} alt={savoury.name} className="w-full h-40 object-cover mb-2" />
+          <Link
+            key={savoury.id}
+            to={`/product-details/${savoury.id}`}
+            className="p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+          >
+            <img
+              src={savoury.image}
+              alt={savoury.name}
+              className="w-full h-40 object-cover mb-2"
+            />
             <h3 className="text-lg font-semibold">{savoury.name}</h3>
             <p className="text-gray-700">₹ {savoury.price}</p>
-            {!savoury.inStock && <span className="text-red-500">Out of stock</span>}
-          </div>
+            {!savoury.inStock && (
+              <span className="text-red-500">Out of stock</span>
+            )}
+          </Link>
         ))}
       </div>
 
-      {filteredSavouries.length === 0 && <p className="text-gray-500 mt-4">No items found in this range.</p>}
+      {filteredSavouries.length === 0 && (
+        <p className="text-gray-500 mt-4">No items found in this range.</p>
+      )}
     </div>
   );
 };

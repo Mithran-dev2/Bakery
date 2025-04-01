@@ -1,38 +1,23 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
-// Define the shape of the cart context
-interface CartContextType {
-  cartCount: number;
-  setCartCount: (count: number) => void;
+export interface CartItem {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  weight: string;
+  quantity: number;
 }
 
-// Create context with default values
+interface CartContextType {
+  cartItems: CartItem[];
+  addToCart: (item: CartItem) => void;
+  removeFromCart: (id: number) => void;
+  clearCart: () => void;
+}
+
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [cartCount, setCartCount] = useState<number>(0);
-
-  // Load cart count from localStorage on mount
-  useEffect(() => {
-    const storedCount = localStorage.getItem("cartCount");
-    if (storedCount) {
-      setCartCount(parseInt(storedCount, 10));
-    }
-  }, []);
-
-  // Save cart count to localStorage on update
-  useEffect(() => {
-    localStorage.setItem("cartCount", cartCount.toString());
-  }, [cartCount]);
-
-  return (
-    <CartContext.Provider value={{ cartCount, setCartCount }}>
-      {children}
-    </CartContext.Provider>
-  );
-};
-
-// Custom hook for using cart count in other components
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {
@@ -40,3 +25,38 @@ export const useCart = () => {
   }
   return context;
 };
+
+export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  const addToCart = (item: CartItem) => {
+    setCartItems((prev) => {
+      const existing = prev.find((i) => i.id === item.id);
+      if (existing) {
+        // Increase quantity if already in cart
+        return prev.map((i) =>
+          i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i
+        );
+      }
+      // Otherwise, add a new item
+      return [...prev, item];
+    });
+  };
+
+  const removeFromCart = (id: number) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
+
+  return (
+    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart }}>
+      {children}
+    </CartContext.Provider>
+  );
+};
+
+
+
