@@ -71,6 +71,29 @@ export interface Product {
   weight: string;
   quantity: number;
 }
+// interface Product {
+//   id: number;
+//   name: string;
+//   price: number;
+//   image: string;
+//   weight: string;
+//   quantity: number;
+// }
+
+interface ProductListProps {
+  products: Product[];
+}
+
+const ProductList: React.FC<ProductListProps> = ({ products }) => {
+  return (
+    <div>
+      {products.map((product) => (
+        <div key={product.id}>{product.name}</div>
+      ))}
+    </div>
+  );
+};
+
 
 // CartItem Interface (Extending Product)
 export interface CartItem extends Product {}
