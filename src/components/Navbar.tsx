@@ -118,6 +118,8 @@ import { FaSearch, FaUser, FaShoppingCart } from "react-icons/fa";
 import { useCart,CartItem } from "../context/setCartCount"; 
 import SweetsDropdown from "./SweetsDropDown";
 import SavouriesDropdown from "./SavouriesDropDown";
+import BakeryDropdown from "./BakeryDropDown";
+import BulkOrder from "./BulkOrder";
 const Navbar: React.FC = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const { cartItems } = useCart();
@@ -157,6 +159,8 @@ const Navbar: React.FC = () => {
               <div className="absolute left-0 mt-2 z-50 bg-white shadow-lg rounded-md">
                 {item === "Sweets" && <SweetsDropdown />}
                 {item === "Savouries" && <SavouriesDropdown />}
+                {item === "Bakery" && <BakeryDropdown />}
+                {item === "Orders" && <BulkOrder />}
               </div>
             )}
           </li>
@@ -274,3 +278,7 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
+
+
+

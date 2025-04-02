@@ -59,9 +59,9 @@ const Home: React.FC = () => {
                   className="w-full h-56 object-cover rounded-md transform transition-transform duration-300 hover:scale-105 cursor-pointer"
                 />
                 <h3 className="mt-4 font-semibold">{item.name}</h3>
-                <p className="text-red-600 font-bold">from Rs. {item.price}</p>
+                <p className="text-red-600 font-bold"> Rs. {item.price}</p>
                 <Link to={`/product-details/${item.id}`} className="text-blue-500 mt-2 inline-block">
-                  View Details
+                  
                 </Link>
               </div>
             ))}
@@ -86,7 +86,7 @@ const Home: React.FC = () => {
       {/* Footer Section */}
       <footer className="text-center py-4 bg-gray-100">
         <p className="text-sm text-gray-600">
-          © {new Date().getFullYear()} Shree Mithai. All rights reserved.
+          © {new Date().getFullYear()} ThenMozhi Sweets. All rights reserved.
         </p>
       </footer>
     </div>

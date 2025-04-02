@@ -38,6 +38,13 @@ const allSweets = [
   { id: 31, name: "9 in 1 Mixture Pudina", price: 300.0, image: "/assets/savouries-dropdown-items/9-in-1-mixture-pudina-4.jpg", inStock: false },
   { id: 32, name: "Dry Fruit Box (250gm)", price: 800.0, image: "/assets/savouries-dropdown-items/dry-fruit-box-4.jpg", inStock: true },
   { id: 33, name: "Royal Dry Fruit Tin (250gm)", price: 600.0, image: "/assets/savouries-dropdown-items/royal-dry-fruit-tin-250g-4.jpg", inStock: true },
+  { id: 34, name: "White Forest Cake", price: 500.0, image: "/assets dropdown Items/white-forest-cake-B6.jpg", inStock: true },
+  { id: 35, name: "Fresh Fruit Cake", price: 650.0, image: "/assets dropdown Items/fresh-fruit-cake-B6.jpg", inStock: true },
+  { id: 36, name: "Pistachio Raspberry cake", price: 600.0, image: "/assets dropdown Items/pistachio-raspberry-cake-B6.jpg", inStock: true },
+  { id: 37, name: "BlueBerry Cake", price: 600.0, image: "/assets dropdown Items/blueberry-cake-B6.jpg", inStock: true },
+  { id: 38, name: "Chocolate Mud Cake", price: 600.0, image: "/assets dropdown Items/chocolate-mud-cake-B6.jpg", inStock: true },
+  { id: 39, name: "Baked CheeseCake (each at 600)", price: 600.0, image: "/assets dropdown Items/baked-cheesecake-B6.jpg", inStock: true },
+  { id: 40, name: "Cup Cakes (each at 100)", price: 100.0, image: "/assets dropdown Items/cupcake-B6.jpg", inStock: true },
 ];
 
 const ProductDetails: React.FC = () => {
